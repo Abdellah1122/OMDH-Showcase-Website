@@ -85,22 +85,21 @@ This project brings critical value to the organization:
 ---
 
 ## 📸 Project Preview
-
-![Homepage](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.44.41.97.png)  
 *Preview of the OMDH Vitrine Website - Homepage*
+![Homepage](Imgae/Landing%20Page.png)  
 
-![Our Missions](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.44.59.45.png)  
 *Preview of the OMDH Vitrine Website - Our Missions*
+![Our Missions](Imgae/Our%20Missions.png)  
 
-![Contact Us](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.45.04.50.png)  
 *Preview of the OMDH Vitrine Website - Contact Us*
+![Contact Us](Imgae/ContactUs.png)  
 
-![Our Projects](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.45.07.92.png)  
 *Preview of the OMDH Vitrine Website - Our Projects*
+![Our Projects](Imgae/OurProject.png)  
 
-![Our Team](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.45.14.97.png)  
-![Our Team Continued](OMDH/Images%20Preview/Desktop%20Screenshot%202025.04.12%20-%2016.45.19.91.png)  
 *Preview of the OMDH Vitrine Website - Our Team*
+![Our Team](Imgae/Our%20team.png)  
+
 
 ---
 
