@@ -1,0 +1,192 @@
+﻿@inject NavigationManager NavigationManager
+<style>
+:root {
+    --primary-color: #1957a6;
+    --primary-dark: #174c91;
+    --secondary-color: #d3612f;
+    --secondary-light: #b55227;
+    --accent-color: #e8f0ed;
+    --danger-color: #d84040;
+    --danger-dark: #c53030;
+    --gold-accent: #d4c197;
+    --light-bg: #F5F5F5;
+    --text-dark: #2c3e50;
+    --text-medium: #546e7a;
+    --text-light: #78909c;
+    --border-radius: 6px;
+    --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+    .language-selector {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+        .language-selector button {
+            color: var(--text-medium);
+            width:2em;
+            margin:-0.5em;
+            transition: var(--transition);
+        }
+
+            .language-selector button:hover {
+                color: var(--primary-color);
+            }
+    /* Hide the Google Translate toolbar and elements */
+    .goog-te-banner-frame {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        display: none !important;
+    }
+
+    .goog-te-combo {
+        display: none !important;
+    }
+
+    /* Hide iframe to prevent UI shift */
+    body > .skiptranslate {
+        display: none !important;
+    }
+
+    /* Prevent content shifting */
+    html {
+        margin-top: 0px !important;
+    }
+
+</style>
+
+<div class="Footerr">
+    <div class="hh">
+        <div class="Left">
+            <div class="Logo">
+                <img src="/Logo2.png" alt="OMDH Logo" />
+            </div>
+            <div class="Omdh">
+                <p>The Moroccan Organization for Human Rights (OMDH) is a distinguished and committed human rights advocacy organization, dedicated to addressing critical issues such as political detention, torture, and the broader promotion of human rights awareness. With a focus on advocating for justice and dignity, OMDH works tirelessly to raise public consciousness and foster positive change in the realm of human rights both nationally and internationally.</p>
+            </div>
+        </div>
+        <div class="Center">
+            <h2>Links</h2>
+            <div class="cnt">
+                <i class="bi bi-telephone-fill"></i>
+                <button @onclick="navigateToContact">Contact Us</button>
+            </div>
+            <div class="cnt">
+                <i class="bi bi-kanban"></i>
+                <button @onclick="navigateToMission">Our Mission</button>
+            </div>
+            <div class="cnt">
+                <i class="bi bi-card-checklist"></i>
+                <button @onclick="navigateToProjects">Our Projects</button>
+            </div>
+            <div class="cnt">
+                <i class="bi bi-people-fill"></i>
+                <button @onclick="navigateToTeam">Our Team</button>
+            </div>
+        </div>
+        <div class="Right">
+            <h2>Contact Us</h2>
+            <div class="Contact">
+                <div class="cnt">
+                    <i class="bi bi-geo"></i>
+                    <p>
+                        8 , rue Ouargha ,
+                        Résidence volubilis, appt 1 ,
+                        Agdal /Rabat ,
+                        Morocco
+                    </p>
+                </div>
+                <div class="cnt">
+                    <i class="bi bi-telephone-fill"></i>
+                    <p>+212 60000000</p>
+                </div>
+                <div class="cnt">
+                    <i class="bi bi-envelope"></i>
+                    <p>Test@gmail.com</p>
+                </div>
+                <div class="btns">
+                    <button @onclick="NavigateToLinkedin"><i class="bi bi-linkedin"></i></button>
+                    <button @onclick="NavigateToFacebook"><i class="bi bi-facebook"></i></button>
+                    <button @onclick="NavigateToX"><i class="bi bi-twitter-x"></i></button>
+                    <button @onclick="NavigateToInstagram"><i class="bi bi-instagram"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="AfterFooter">
+        <p>All right Reserved</p>
+        <div id="language-selector" class="language-selector">
+            <button onclick="changeLanguage('en')">English</button> |
+            <button onclick="changeLanguage('es')">Español</button> |
+            <button onclick="changeLanguage('ar')">العربية</button> |
+            <button onclick="changeLanguage('fr')">Français</button>
+        </div>
+        <div id="google_translate_element"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en', includedLanguages: 'en,es,ar,fr', autoDisplay: false },
+            'google_translate_element'
+        );
+    }
+
+    function changeLanguage(langCode) {
+        var select = document.querySelector(".goog-te-combo");
+        if (select) {
+            select.value = langCode;
+            select.dispatchEvent(new Event("change"));
+        } else {
+            console.error("Google Translate dropdown not found.");
+        }
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+@code {
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+    private void NavigateToFacebook()
+    {
+        NavigationManager.NavigateTo("https://www.facebook.com", forceLoad: true);
+    }
+    private void NavigateToInstagram()
+    {
+        NavigationManager.NavigateTo("https://www.Instagram.com", forceLoad: true);
+    }
+    private void NavigateToLinkedin()
+    {
+        NavigationManager.NavigateTo("https://www.linkedin.com/", forceLoad: true);
+    }
+    private void NavigateToX()
+    {
+        NavigationManager.NavigateTo("https://www.X.com/", forceLoad: true);
+    }
+}

@@ -1,0 +1,243 @@
+﻿.OurStory {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    padding: 0em 1em 0em 0em;
+    background-color: var(--accent-color);
+}
+.Sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    gap: 1.5em;
+}
+.image-about img {
+    width: 40vw;
+    min-height: 400px;
+    height: auto;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.aboutt {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+    padding:3em;
+    justify-content:center;
+    align-items:center;
+    gap: 2em;
+}
+
+.about-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap: 1em;
+}
+
+.MainCont {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding:2em;
+}
+
+.btns {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+    .btns button {
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 3px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .btns button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+h2::after {
+    content: "";
+    display: block;
+    width: 2em;
+    height: 3px; /* Adjust thickness if needed */
+    background-color: var(--secondary-color);
+    margin: 5px auto 0;
+}
+
+.Form {
+    width: 100%;
+    max-width: 70em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 4em;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.row {
+    display: flex;
+    gap: 1em;
+    margin-left: 0.05em;
+    width: 100%;
+}
+
+    .row input {
+        flex: 1;
+    }
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #f8f9fa;
+}
+
+    input::placeholder {
+        color: #adb5bd;
+    }
+
+    input:focus {
+        border-color: var(--secondary-color);
+        box-shadow: var(--secondary-color);
+        background-color: white;
+    }
+
+    input:hover {
+        border-color: var(--secondary-color);
+    }
+
+.find {
+    background-color: var(--accent-color);
+    width: 90%;
+    height: 15em;
+    padding: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.iconText {
+    width: 30%;
+    background-color: var(--light-bg);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+}
+@media (max-width: 768px) {
+    .OurStory {
+        flex-direction: column;
+        gap: 2em;
+        padding: 1em;
+    }
+
+    .image-about img {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .aboutt {
+        margin-top: 1em;
+        gap: 1em;
+        padding: 0;
+    }
+
+    .about-p {
+        gap: 1em;
+    }
+
+    .MainCont {
+        gap: 1.5em;
+    }
+
+    .btns {
+        gap: 0.5em;
+    }
+
+        .btns button {
+            width: 35px;
+            height: 35px;
+        }
+
+    .Sec {
+        padding: 0.5em;
+        gap: 1em;
+    }
+
+    .Form {
+        padding: 2em;
+        width: 95%;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 1em;
+        margin-left: 0;
+    }
+
+    input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .find {
+        flex-direction: column;
+        height: auto;
+        padding: 1em;
+        gap: 1em;
+        width: 95%;
+    }
+
+    .iconText {
+        width: 100%;
+        padding: 1em 0.5em;
+        font-size: 1em;
+    }
+}
+.autoShow {
+    animation: autoShowAnimation both;
+    animation-timeline: view(90% 5%);
+}
+
+@keyframes autoShowAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

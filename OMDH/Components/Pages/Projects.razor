@@ -1,0 +1,240 @@
+﻿@page "/Projects"
+@inject NavigationManager NavigationManager
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: white;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --Montsera: "Montserrat", sans-serif;
+        --Poppins: "Poppins", sans-serif;
+        --Roboto: "Roboto", sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--Montsera);
+        font-size: 0.99em;
+        transition: var(--transition);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: var(--text-dark);
+    }
+
+    button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: 0.5px;
+    }
+
+    .BtnPrimary {
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid var(--primary-color);
+    }
+
+        .BtnPrimary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnSuc {
+        background-color: var(--secondary-color);
+        color: white;
+        border: 1px solid var(--secondary-color);
+    }
+
+        .BtnSuc:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnDanger {
+        background-color: var(--danger-color);
+        color: white;
+        border: 1px solid var(--danger-color);
+    }
+
+        .BtnDanger:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .MainCont {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 2em;
+        justify-content:center;
+        align-items:center;
+    }
+
+
+
+    h2::after {
+        content: "";
+        display: block;
+        width: 2em;
+        height: 3px; /* Adjust thickness if needed */
+        background-color: var(--secondary-color);
+        margin: 5px auto 0;
+    }
+</style>
+<Navigation />
+<div class="MainCont">
+    <div class="Sec">
+        <h2>Our Latest Projects</h2>
+        <p>Discover our most recent initiatives dedicated to defending human rights and promoting justice. From advocacy campaigns to community-driven programs, our projects aim to create lasting impact, empower individuals, and drive meaningful change. Stay informed and join us in shaping a more just and equitable world.</p>
+        <div class="LatestProjects">
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/Images/Hand-solitarity.jpg" alt="Project Image">
+                <div class="overlay">
+                    <p>Project Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Sec1">
+        <div class="SLeft">
+            <div class="autoShow">
+                <h2>Our Projects Timeline :</h2>
+            </div>
+            <div class="autoShow">
+                <p>1970 – The organization was founded with the mission to defend fundamental human rights and advocate for social justice. Early efforts focused on raising awareness through grassroots campaigns and publications.</p>
+            </div>
+            <div class="autoShow">
+                <p>1977 – Launched our first major legal initiative, successfully challenging discriminatory laws and setting a precedent for human rights litigation. This year also saw the expansion of our advocacy programs internationally.</p>
+            </div>
+            <div class="autoShow">
+                <p>1979 – Organized a landmark protest that led to policy changes on political imprisonment, strengthening protections for activists and dissidents.</p>
+            </div>
+            <div class="autoShow">
+                <p>1985 – Established partnerships with global human rights groups, increasing our capacity to address injustices on a larger scale.</p>
+            </div>
+            <div class="autoShow">
+                <p>1990 – Played a key role in the creation of new human rights legislation, influencing governments to adopt stronger protections against human rights violations.</p>
+            </div>
+
+
+        </div>
+        <div class="SRight">
+            <div class="Sec">
+                <div class="Projects">
+                    <MudTimeline>
+                        <MudTimelineItem Style="color:black;" Size="Size.Small">
+                            <ItemOpposite>
+                                <MudText Style="color: var(--primary-color);" Typo="Typo.h5">1970</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                <div class="autoShow">
+                                    <MudText Style="color: var(--primary-color);" Typo="Typo.h6" GutterBottom="true">Atom Towns</MudText>
+                                </div>
+                                <div class="autoShow">
+                                    <MudText>Construction of the town of Pripyat, one of 9 “atom towns” begins, to be inhabited by future employees of the nuclear power plants.</MudText>
+                                </div>
+                                <div class="autoShow">
+                                    <img src="/Images/Peace-Pigeon.jpg" />
+                                </div>
+                            </ItemContent>
+                        </MudTimelineItem>
+                        <MudTimelineItem Style="color:black;" Size="Size.Small">
+                            <ItemOpposite>
+                                <MudText Style="color: var(--secondary-color);" Typo="Typo.h5">1977</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                <div class="autoShow">
+                                    <MudText Style="color: var(--secondary-color);" Typo="Typo.h6" GutterBottom="true">Operational</MudText>
+                                </div>
+                                <div class="autoShow">
+                                    <MudText>The first of the Chernobyl Nuclear Power Plants four reactors is ready to operate followed by number 2 in 1978.</MudText>
+                                </div>
+                                <div class="autoShow">
+                                    <img src="/Images/Ball.jpg" />
+                                </div>
+                            </ItemContent>
+                        </MudTimelineItem>
+                    </MudTimeline>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<Footer />
+@code {
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}
+

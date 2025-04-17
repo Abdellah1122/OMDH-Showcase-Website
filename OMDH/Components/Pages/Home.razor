@@ -1,0 +1,317 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: white;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --Montsera: "Montserrat", sans-serif;
+        --Poppins: "Poppins", sans-serif;
+        --Roboto: "Roboto", sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:"Montserrat", sans-serif;
+        font-size:0.99em;
+        transition: var(--transition);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: var(--text-dark);
+    }
+
+    button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: 0.5px;
+    }
+
+    .BtnPrimary {
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid var(--primary-color);
+    }
+
+        .BtnPrimary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnSuc {
+        background-color: var(--secondary-color);
+        color: white;
+        border: 1px solid var(--secondary-color);
+    }
+
+        .BtnSuc:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnDanger {
+        background-color: var(--danger-color);
+        color: white;
+        border: 1px solid var(--danger-color);
+    }
+
+        .BtnDanger:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+    .MainPartners{
+        width:100%;
+        height:12em;
+        padding:1em;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        align-items:center;
+        box-shadow: var(--box-shadow);
+    }
+
+    .MainPartners img{
+        width:10em;
+        height:10em;
+            box-shadow: var(--box-shadow);
+     }
+
+    .AllPartners{
+        display:flex;
+        flex-direction:row;
+        box-shadow:var(--box-shadow);
+        border-radius: var(--border-radius);
+        width:100%;
+        padding:1em 4em;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+        .AllPartners h3{
+            color:var(--secondary-color);
+        }
+    .image-partners{
+        width:50%;
+        border-radius:var(--border-radius);
+        height:100%;
+        padding:1em;
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        gap:3em;
+        justify-content:center;
+        align-items:center;
+    }
+
+        .image-partners img {
+            width: 10em;
+            height: 8em;
+            box-shadow: var(--box-shadow);
+            border-radius:5px;
+        }
+
+            .image-partners img:hover, .MainPartners img:hover {
+                transform: scale(1.02);
+                cursor:pointer;
+            }
+
+    .title{
+        width:40%;
+        padding:1em;
+        gap:1em;
+        display:flex;
+        flex-direction:column;
+    }
+</style>
+
+<div class="img">
+	<img src="Images/Refugee2.jpg" />
+</div>
+<Nav />
+<div class="MainContainer">
+	<div class="intro">
+        <h1>Moroccan human rights organization</h1>
+	</div>
+    <div class="Sec">
+        <h2 >Our Mission</h2>
+        <div class="Missionss">
+            <div class="MissionsLeft">
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>1. Protection of Human Rights</h3>
+                        <p>OMDH works to safeguard fundamental human rights by monitoring violations, providing legal support to victims, and advocating for justice in line with international conventions.</p>
+                    </div>
+                </div>
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>3. Freedom of Expression and Press</h3>
+                        <p>OMDH defends the right to free speech and a free press, condemning censorship, arbitrary detentions of journalists, and any restrictions on media freedom.</p>
+                    </div>
+                </div>
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>5. Social Justice and Minority Rights</h3>
+                        <p>The organization supports marginalized groups, including ethnic minorities, persons with disabilities and ensuring equal rights and protection under the law.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="MissionsRight">
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>2. Promoting Democracy and Rule of Law</h3>
+                        <p>Encouraging democratic governance, justice, and legal reforms to ensure the independence of the judiciary and fair trials.</p>
+                    </div>
+                </div>
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>4. Gender Equality and Women's Rights</h3>
+                        <p>It actively fights discrimination against women, promotes gender equality in legal and social contexts, and advocates for stronger laws protecting women's rights.</p>
+                    </div>
+                </div>
+                <div class="autoShow">
+                    <div class="Mission">
+                        <h3>6. Human Rights Education and Awareness</h3>
+                        <p>OMDH conducts workshops, seminars, and awareness campaigns to educate citizens about their rights and responsibilities, fostering a culture of human rights in Morocco.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Our Story*@
+   
+        <div class="OurStory">
+            <div class="image-about">
+                <img src="/Images/Kids.jpg" />
+            </div>
+        <div class="autoShow">
+            <div class="aboutt">
+                <div class="about-title">
+                    <h3>OMDH: Advocating for Justice and Human Dignity</h3>
+
+                </div>
+                <div class="about-p">
+                    <p>At the heart of our mission lies an unwavering commitment to justice, equality, and the protection of fundamental human rights. We advocate for the dignity and freedoms of all individuals, striving to create a world where every voice is heard, every right is upheld, and every person is empowered to live without fear or oppression.</p>
+                    <button class="BtnPrimary" @onclick="navigateToProjects">Explore More</button>
+                </div>
+            </div>
+        </div>
+        </div>
+   
+    <div class="Sec">
+        <h2>Our Partners :</h2>
+        <div class="AllPartners">
+            <div class="title">
+                    <h3>Discover All Our Partners</h3>
+                <p>We collaborate with dedicated organizations and advocates who share our commitment to human rights. Together, we strive to create a world where dignity, justice, and equality are upheld for all. Explore our network of partners and join us in making a lasting impact.</p>
+            </div>
+            <div class="image-partners">
+                <img src="Logos/2M_TV_logo.png" />
+                <img src="Logos/BMCI.png" />
+                <img src="Logos/Inwi.png" />
+                <img src="Logos/Marjane.png" />
+                <img src="Logos/Marsa.png" />
+                <img src="Logos/Wafa.png" />
+                <img src="Logos/IAM.png" />
+                <img src="/Logos/ONCF.png" />
+                <img src="/Logos/Agma.jpg" />
+            </div>
+        </div>
+        </div>
+        @*Our team*@
+        <div class="Sec">
+        <div class="autoShow">
+            <h2>Our Team</h2>
+            </div>
+            <div class="Team">
+                <div class="autoShow">
+                <div class="Member">
+                    <img src="ImageEmployee/1.jpg"/>
+                    <h3>Mouad Sami</h3>
+                    <p>Mouad Sami is a dedicated professional leading departmental efforts at OMDH in Morocco. With extensive experience in human rights advocacy and organizational management, he oversees key initiatives, coordinates teams, and contributes to promoting justice and civil rights.</p>
+                </div>
+                </div>
+                <div class="autoShow">
+                <div class="Member">
+                    <img src="ImageEmployee/2.jpg" />
+                    <h3>Abdellah Jorf</h3>
+                    <p>Abdellah Jorf leads the Technology Department at OMDH in Morocco, driving digital transformation and innovation. With expertise in IT solutions and system management, he ensures the organization's technological infrastructure supports its mission effectively.</p>
+                </div>
+                </div>
+                <div class="autoShow">
+                <div class="Member">
+                    <img src="ImageEmployee/3.jpg"/>
+                    <h3>Mehdi Mouhssine</h3>
+                    <p>Mehdi Mouhssine oversees the Finance Department at OMDH in Morocco, managing budgets, financial planning, and compliance. His strategic approach ensures transparency and efficiency in financial operations to support the organization's initiatives.</p>
+                </div>
+                </div>
+            </div>
+            <button class="BtnSuc" @onclick="navigateToTeam">Explore More</button>
+        </div>
+    <div class="finddd">
+        <div class="Sec">
+            <div class="autoShow">
+                <h2>Find Us</h2>
+                </div>
+            <div class="autoShow">
+                <div style="width: 92vw; height:80vh;">
+                    
+                    <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Marrakech%20.%20Cozytel+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" />
+                </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+<Footer />
+
+@code{
+
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}

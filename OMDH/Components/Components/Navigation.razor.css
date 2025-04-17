@@ -1,0 +1,90 @@
+﻿
+.Nv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5em 8rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(230, 240, 237, 0.2);
+    backdrop-filter: blur(7px);
+    border-bottom: 1px solid var(--secondary-color);
+    transition: background-color 0.3s ease;
+}
+
+    .Nv.scrolled {
+    }
+
+        .Nv.scrolled .Btnss {
+        }
+
+.logo-container img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+    .logo-container img:hover {
+        transform: scale(1.05);
+    }
+
+.NavBtns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.Btnss {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+    .Btnss:hover {
+        color: var(--primary-color);
+    }
+
+    .Btnss::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--primary-dark);
+        transition: all 0.3s ease;
+    }
+
+    .Btnss:hover::after {
+        width: 100%;
+        left: 0;
+    }
+
+@media (max-width: 768px) {
+    .Nv {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .logo-container {
+        margin-bottom: 1rem;
+    }
+
+    .NavBtns {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .Btnss {
+        font-size:small;
+        padding: 0;
+    }
+}

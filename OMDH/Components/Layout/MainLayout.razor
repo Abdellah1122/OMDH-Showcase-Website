@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@* Required *@
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<main>
+ @Body
+</main>
+<script>
+    let bgAudio = null;
+
+    window.playBackgroundMusicContinuous = function() {
+        if (!bgAudio) {
+            bgAudio = new Audio('/Music/background.mp3');
+            bgAudio.loop = true;
+            bgAudio.volume = 0.3; // Set an appropriate volume level
+
+            // Ensure audio keeps playing even if not interacted with
+            document.addEventListener('click', function() {
+                if (bgAudio.paused) {
+                    bgAudio.play();
+                }
+            }, { once: true });
+
+            // Try to start playing automatically
+            bgAudio.play().catch(e => {
+                console.log("Auto-play prevented. User interaction required.");
+                // Modern browsers require user interaction before playing audio
+            });
+        }
+    };
+</script>
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Initialize and play the background music when the app first loads
+            await JSRuntime.InvokeVoidAsync("playBackgroundMusicContinuous");
+        }
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+}

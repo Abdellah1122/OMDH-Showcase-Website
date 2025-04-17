@@ -1,0 +1,365 @@
+﻿@page "/Contact"
+
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+@inject IEmailService EmailService
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: white;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --Montsera: "Montserrat", sans-serif;
+        --Poppins: "Poppins", sans-serif;
+        --Roboto: "Roboto", sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--Montsera);
+        font-size: 0.99em;
+        transition: var(--transition);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: var(--text-dark);
+    }
+
+    button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: 0.5px;
+    }
+
+    .BtnPrimary {
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid var(--primary-color);
+    }
+
+        .BtnPrimary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnSuc {
+        background-color: var(--secondary-color);
+        color: white;
+        border: 1px solid var(--secondary-color);
+    }
+
+        .BtnSuc:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnDanger {
+        background-color: var(--danger-color);
+        color: white;
+        border: 1px solid var(--danger-color);
+    }
+
+        .BtnDanger:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .MainCont {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 2em;
+    }
+
+    .Sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        gap: 1.5em;
+    }
+
+    .Loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1em;
+    }
+</style>
+<Navigation />
+<div class="MainCont">
+    <div class="OurStory">
+        <div class="image-about">
+            <img src="/Images/Sm.jpg" />
+        </div>
+        <div class="aboutt">
+            <div class="about-title">
+                <h3>Feel free to contact us for any inquiries or assistance.</h3>
+
+            </div>
+            <div class="about-p">
+                <p>Our social media pages:</p>
+                <div class="btns">
+                    <button @onclick="NavigateToLinkedin"><i class="bi bi-linkedin"></i></button>
+                    <button @onclick="NavigateToFacebook"><i class="bi bi-facebook"></i></button>
+                    <button @onclick="NavigateToX"><i class="bi bi-twitter-x"></i></button>
+                    <button @onclick="NavigateToInstagram"><i class="bi bi-instagram"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Sec">
+        <h2>Leave us a Message</h2>
+        <div class="Form">
+            <div class="row">
+                <input type="text" @bind="FirstName" placeholder="First Name" required>
+                <input type="text" @bind="LastName" placeholder="Last Name" required>
+            </div>
+            <input type="tel" @bind="PhoneNumber" placeholder="Phone Number " required>
+            <input type="email" @bind="Email" placeholder="Email" required>
+            <MudAutocomplete T="string" Label="Chose Topic" @bind-Value="value1" SearchFunc="@Search1" />
+            <input style="height:7em;" @bind="Subject" type="text" placeholder="Subject" required>
+            <button class="BtnPrimary" @onclick="SendEmail" disabled="@isSending">
+                @(isSending ? "Sending..." : "Send")
+            </button>
+
+            @if (isSending)
+            {
+                <div class="Loader">
+                    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+                </div>
+
+            }
+        </div>
+    </div>
+    <div class="Sec">
+        <div class="autoShow">
+            <h2>Find Us</h2>
+        </div>
+        <div class="find">
+            <div class="iconText">
+                <div class="autoShow">
+                    <i class="bi bi-geo"></i>
+                    <p>
+                        8 , rue Ouargha ,
+                        Résidence volubilis, appt 1 ,
+                        Agdal /Rabat ,
+                        Morocco
+                    </p>
+                </div>
+               
+            </div>
+            <div class="iconText">
+                <div class="autoShow">
+                    <i class="bi bi-telephone-fill"></i>
+                    <p>+212 60000000</p>
+                </div>
+            </div>
+            <div class="iconText">
+                <div class="autoShow">
+                    <i class="bi bi-envelope"></i>
+                    <p>Test@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="autoShow">
+            <div style="width: 92vw; height:80vh;">
+                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Marrakech%20.%20Cozytel+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" />
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<Footer />
+@code {
+    public string FirstName = string.Empty;
+    public string LastName = string.Empty;
+    public string PhoneNumber = string.Empty;
+    public string Email = string.Empty;
+    public string Subject = string.Empty;
+    public bool isSending;
+
+    public async Task SendEmail()
+    {
+        if (string.IsNullOrWhiteSpace(FirstName) ||
+            string.IsNullOrWhiteSpace(LastName) ||
+            string.IsNullOrWhiteSpace(Email) ||
+            string.IsNullOrWhiteSpace(value1) ||
+            string.IsNullOrWhiteSpace(Subject))
+        {
+            Snackbar.Add("Fill All fields", Severity.Error);
+            return;
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+        {
+            Snackbar.Add("Email Not Valid", Severity.Error);
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(PhoneNumber) &&
+        !System.Text.RegularExpressions.Regex.IsMatch(PhoneNumber, @"^\+?\d{1,3}?[-\s]?\d{3,4}[-\s]?\d{3,4}$"))
+        {
+            Snackbar.Add("Phone Number Not valid", Severity.Error);
+            return;
+        }
+
+
+        isSending = true; // Show loader
+        try
+        {
+            EmailDTO emailDTO = new EmailDTO
+                {
+                    Subject = value1,
+                    ToEmail = "abdellahjorf4@gmail.com",
+                    Body = $@"
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }}
+        .container {{
+            max-width: 500px;
+            padding: 20px;
+        }}
+        .card {{
+            border-left: 4px solid #1957a6;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 20px;
+        }}
+        h2 {{
+            color: #d3612f;
+            margin-top: 0;
+            font-weight: 500;
+        }}
+        .info {{
+            margin: 15px 0;
+        }}
+        .label {{
+            font-weight: 600;
+            display: inline-block;
+            width: 80px;
+        }}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='card'>
+            <h2>Topic : {value1}</h2>
+            <div class='info'><span class='label'>Name:</span> {FirstName} {LastName}</div>
+            <div class='info'><span class='label'>Email:</span> {Email}</div>
+            <div class='info'><span class='label'>Phone:</span> {PhoneNumber}</div>
+            <div class='info'><span class='label'>Subject:</span> {Subject}</div>
+        </div>
+    </div>
+</body>
+</html>"
+                };
+
+            EmailService.SendEmail(emailDTO);
+            Snackbar.Add("Email Sent Successfully", Severity.Success);
+
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add("Failed to send email , Error Server", Severity.Error);
+        }
+        finally
+        {
+            isSending = false;
+            clear();
+        }
+    }
+
+    void clear()
+    {
+        value1 = string.Empty;
+        FirstName = string.Empty;
+        LastName = string.Empty;
+        PhoneNumber = string.Empty;
+        Email = string.Empty;
+        Subject = string.Empty;
+    }
+    private string value1 = string.Empty;
+    private string[] states;
+    private async Task<IEnumerable<string>> Search1(string value, CancellationToken token)
+    {
+        await Task.Delay(5, token);
+        if (string.IsNullOrEmpty(value))
+            return states;
+        return states.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        states = ["Inquiry", "Volunteer request", "Suggestions"];
+    }
+    private void NavigateToFacebook()
+    {
+        NavigationManager.NavigateTo("https://www.facebook.com", forceLoad: true);
+    }
+    private void NavigateToInstagram()
+    {
+        NavigationManager.NavigateTo("https://www.Instagram.com", forceLoad: true);
+    }
+    private void NavigateToLinkedin()
+    {
+        NavigationManager.NavigateTo("https://www.linkedin.com/", forceLoad: true);
+    }
+    private void NavigateToX()
+    {
+        NavigationManager.NavigateTo("https://www.X.com/", forceLoad: true);
+    }
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}

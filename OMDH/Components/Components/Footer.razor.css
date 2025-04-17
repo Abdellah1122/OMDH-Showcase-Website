@@ -1,0 +1,174 @@
+﻿.Footerr {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent-color);
+    border-top: 1px solid var(--secondary-color);
+    box-shadow: var(--box-shadow);
+}
+
+.hh {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2em 3em;
+    width: 100%;
+}
+
+.Left, .Right, .Center {
+    width: 30%;
+    text-align: center;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.2em;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.Logo img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.Omdh p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-medium);
+    text-align: justify;
+}
+
+.Center h2, .Right h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1em;
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+    .Center h2:after, .Right h2:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+.cnt {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.8em;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.Center .cnt {
+    margin-bottom: 0.5em;
+}
+
+.bi {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+/* Button styling for Center section */
+.Center .cnt {
+    cursor: pointer;
+    padding: 0.6em 1em;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+    .Center .cnt:hover {
+        background-color: rgba(25, 87, 166, 0.1);
+    }
+
+        .Center .cnt:hover .bi {
+            color: var(--secondary-color);
+            transform: translateX(-3px);
+        }
+
+    .Center .cnt button {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        color: var(--text-medium);
+        cursor: pointer;
+        position: relative;
+        padding: 0;
+        text-align: left;
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+        .Center .cnt button:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+    .Center .cnt:hover button {
+        color: var(--primary-dark);
+    }
+
+        .Center .cnt:hover button:after {
+            width: 100%;
+        }
+
+/* Contact section styling */
+.Contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+    width: 100%;
+}
+
+    .Contact .cnt {
+        padding: 0.8em;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+    }
+
+/* After Footer section */
+.AfterFooter {
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    color: var(--text-medium);
+    background-color: var(--accent-color);
+}
+
+    .AfterFooter p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+@media (max-width: 992px) {
+    .hh {
+        flex-direction: column;
+        padding: 2em 1em;
+    }
+
+    .Left, .Right, .Center {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    .Logo img {
+        width: 60%;
+    }
+}

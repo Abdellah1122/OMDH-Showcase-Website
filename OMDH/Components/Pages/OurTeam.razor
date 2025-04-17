@@ -1,0 +1,363 @@
+﻿@page "/Team"
+@inject NavigationManager NavigationManager
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: white;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --Montsera: "Montserrat", sans-serif;
+        --Poppins: "Poppins", sans-serif;
+        --Roboto: "Roboto", sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--Montsera);
+        font-size: 0.99em;
+        transition: var(--transition);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: var(--text-dark);
+    }
+
+    button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: 0.5px;
+    }
+
+    .BtnPrimary {
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid var(--primary-color);
+    }
+
+        .BtnPrimary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnSuc {
+        background-color: var(--secondary-color);
+        color: white;
+        border: 1px solid var(--secondary-color);
+    }
+
+        .BtnSuc:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnDanger {
+        background-color: var(--danger-color);
+        color: white;
+        border: 1px solid var(--danger-color);
+    }
+
+        .BtnDanger:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .MainCont {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 2em;
+    }
+    .Sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        gap: 1.5em;
+    }
+
+    h2::after {
+        content: "";
+        display: block;
+        width: 2em;
+        height: 3px; /* Adjust thickness if needed */
+        background-color: var(--secondary-color);
+        margin: 5px auto 0;
+    }
+
+    .btns{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        gap:0em;
+        width:80%;
+        flex-wrap:wrap;
+    }
+
+    .btns button{
+        color:var(--primary-color);
+        width:1em;
+    }
+    button i{
+        font-size:1.1em;
+    }
+    .btns button:hover {
+        transform: translateY(-1px);
+        color: var(--secondary-color);
+    }
+
+    .container {
+        max-width: 1500px;
+        margin:2em auto;
+        position: relative;
+    }
+
+    .segment {
+       
+        border-radius: 10px;
+        padding: 5em;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 2px solid #e0e0e0;
+        display: flex;
+        position: relative;
+        overflow: visible;
+    }
+
+    .content {
+        flex: 1;
+        padding-right: 200px;
+    }
+
+    h3 {
+        font-size: 28px;
+        margin-bottom: 1em;
+        border-bottom:2px solid var(--secondary-color);
+        padding-bottom:0.5em;
+        color: #333;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #666;
+        max-width: 600px;
+    }
+
+    .segment img {
+            position: absolute;
+            right: -4em;
+            bottom:0em;
+            width: 45em;
+            height: auto;
+            z-index: 10;
+        }
+
+    .Member {
+        display: flex;
+        max-width:25%;
+        padding:1em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius:var(--border-radius);
+        text-align: center;
+        gap: 0.5em;
+    }
+
+        .Member img {
+            width: 18em;
+            height: 25em;
+            border-radius:var(--border-radius);
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+    .Team {
+        width: 95%;
+        padding: 2em 1em;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--accent-color);
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5em;
+    }
+
+</style>
+<Navigation />
+<div class="MainCont">
+    <div class="Sec">
+        <div class="container">
+            <div class="segment">
+                <div class="content">
+                    <h3>The OMDH Team: </h3>
+                    <p>
+                        At OMDH, our team is dedicated to advancing human rights and social justice in Morocco. With diverse expertise and a shared passion for change, we work together to empower communities and protect the rights and dignity of every individual.
+                    </p>
+                </div>
+                <img src="/ImageEmployee/istockphoto-1413766112-612x612-removebg-preview.png" alt="Person image">
+            </div>
+        </div>
+		<div class="autoShow">
+			<h2>Meet the Team : </h2>
+        </div>
+        
+        <div class="Team">
+            @if(members!=null && members.Any())
+            {
+                foreach(var member in members)
+                {
+                    <div class="Member">
+						<img src="ImagesMembers/@member.Image" />
+                        <h4>@member.Nom @member.Prenom</h4>
+                        <p>@member.Bio</p>
+                        <div class="btns">
+                            <button @onclick="()=>NavigateToSocial(member.Linkedin)"><i class="bi bi-linkedin"></i></button>
+                            <button @onclick="()=>NavigateToSocial(member.Facebook)"><i class="bi bi-facebook"></i></button>
+                            <button @onclick="()=>NavigateToSocial(member.X)"><i class="bi bi-twitter-x"></i></button>
+                            <button @onclick="()=>NavigateToSocial(member.Instagram)"><i class="bi bi-instagram"></i></button>
+                        </div>
+                    </div>
+                }
+            }
+            
+        </div>
+    </div>
+</div>
+<Footer />
+@code {
+    List<Member> members;
+    protected override async Task OnInitializedAsync()
+    {
+        members = new List<Member>
+{
+    new Member
+    {
+        Id = 1,
+        Nom = "El Azouzi",
+        Prenom = "Youssef",
+        Bio = "Passionné par la technologie et l’innovation, Youssef est un développeur full-stack spécialisé en solutions web modernes.",
+        Image = "youssef.jpg",
+        Linkedin = "https://www.linkedin.com/in/youssef-elazouzi",
+        Instagram = "https://www.instagram.com/youssef.elazouzi",
+        Facebook = "https://www.facebook.com/youssef.elazouzi",
+        X = "https://twitter.com/youssef_elazouzi"
+    },
+    new Member
+    {
+        Id = 2,
+        Nom = "Ben Slimane",
+        Prenom = "Fatima",
+        Bio = "Consultante en stratégie digitale, Fatima aide les entreprises à optimiser leur présence en ligne et leur marketing numérique.",
+        Image = "fatima.jpg",
+        Linkedin = "https://www.linkedin.com/in/fatima-benslimane",
+        Instagram = "https://www.instagram.com/fatima_benslimane",
+        Facebook = "https://www.facebook.com/fatima.benslimane",
+        X = "https://twitter.com/fatima_benslimane"
+    },
+    new Member
+    {
+        Id = 3,
+        Nom = "Dlimi",
+        Prenom = "Aymen",
+        Bio = "Entrepreneur et conférencier, Aymen est un expert en intelligence artificielle et en automatisation des processus.",
+        Image = "aymen.jpg",
+        Linkedin = "https://www.linkedin.com/in/aymen-dlimi",
+        Instagram = "https://www.instagram.com/aymen_dlimi",
+        Facebook = "https://www.facebook.com/aymen.dlimi",
+        X = "https://twitter.com/aymen_dlimi"
+    },
+    new Member
+    {
+        Id = 4,
+        Nom = "Alaoui",
+        Prenom = "Mariam",
+        Bio = "Designer graphique et illustratrice, Mariam transforme des idées en visuels percutants pour les marques et les entreprises.",
+        Image = "mariam.jpg",
+        Linkedin = "https://www.linkedin.com/in/mariam-alaoui",
+        Instagram = "https://www.instagram.com/mariam_alaoui",
+        Facebook = "https://www.facebook.com/mariam.alaoui",
+        X = "https://twitter.com/mariam_alaoui"
+    },
+    new Member
+    {
+        Id = 5,
+        Nom = "Tazi",
+        Prenom = "Hamza",
+        Bio = "Spécialiste en cybersécurité, Hamza protège les systèmes et données sensibles des entreprises contre les cybermenaces.",
+        Image = "hamza.jpg",
+        Linkedin = "https://www.linkedin.com/in/hamza-tazi",
+        Instagram = "https://www.instagram.com/hamza_tazi",
+        Facebook = "https://www.facebook.com/hamza.tazi",
+        X = "https://twitter.com/hamza_tazi"
+    },
+    new Member
+    {
+        Id = 6,
+        Nom = "Bekkali",
+        Prenom = "Sara",
+        Bio = "Experte en ressources humaines, Sara accompagne les entreprises dans le développement et la gestion de leurs talents.",
+        Image = "sara.jpg",
+        Linkedin = "https://www.linkedin.com/in/sara-bekkali",
+        Instagram = "https://www.instagram.com/sara_bekkali",
+        Facebook = "https://www.facebook.com/sara.bekkali",
+        X = "https://twitter.com/sara_bekkali"
+    }
+};
+    }
+    private void NavigateToSocial(string social)
+    {
+        NavigationManager.NavigateTo(social, forceLoad: true);
+    }
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}

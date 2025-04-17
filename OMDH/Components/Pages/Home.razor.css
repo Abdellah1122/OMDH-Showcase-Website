@@ -1,0 +1,275 @@
+﻿
+.img {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+    .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.MainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 15em;
+    height: 90vh;
+    color: #eee;
+}
+
+    .intro h1 {
+        font-style: normal;
+        font-size: 50px;
+        letter-spacing: 10px;
+        text-align: center;
+    }
+
+.Sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    gap: 1.5em;
+}
+h2::after {
+    content: "";
+    display: block;
+    width: 2em;
+    height: 3px; /* Adjust thickness if needed */
+    background-color: var(--secondary-color);
+    margin: 5px auto 0;
+}
+.OurStory {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    margin-top: 2em;
+    padding: 0em 1em 0em 0em;
+    background-color: var(--accent-color);
+}
+
+.image-about img {
+    width: 45vw;
+    min-height: 400px;
+    height: auto;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.aboutt {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+    gap: 2em;
+}
+
+.about-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+.Missionss {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    padding: 2em;
+    gap: 1em;
+}
+
+.MissionsLeft, .MissionsRight {
+    width: 50%;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+.MissionsRight {
+    margin-top: 4em;
+}
+
+.Mission {
+    background-color: var(--accent-color);
+    padding: 1em;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+
+
+.Team {
+    padding: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2em;
+}
+
+.Member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+}
+
+    .Member img {
+        width: 15em; /* Set the fixed width */
+        height: 15em; /* Set the fixed height */
+        border-radius: 50%; /* Makes it a perfect circle */
+        object-fit: cover; /* Ensures the image is properly cropped */
+        display: block;
+        margin: 0 auto;
+        border: 3px solid var(--secondary-color); /* Optional: adds a subtle border */
+    }
+
+.autoShow {
+    animation: autoShowAnimation both;
+    animation-timeline: view(90% 5%);
+}
+
+@keyframes autoShowAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@media (max-width: 768px) {
+    .img {
+        height: 100vh;
+    }
+
+    .MainContainer {
+        gap: 2em;
+    }
+
+    .intro {
+        padding: 2em 1em;
+        height: auto;
+        min-height: 80vh;
+    }
+
+        .intro h1 {
+            font-size: 28px;
+            letter-spacing: 5px;
+        }
+
+    .Sec {
+        padding: 0.5em;
+    }
+
+    .OurStory {
+        flex-direction: column;
+        gap: 2em;
+        padding: 1em;
+        margin-top: 1em;
+    }
+
+    .image-about img {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .aboutt {
+        margin-top: 1em;
+        gap: 1em;
+        padding: 1em;
+    }
+
+    .about-p {
+        gap: 1em;
+    }
+
+    .Missionss {
+        flex-direction: column;
+        width: 100%;
+        padding: 1em;
+        gap: 2em;
+    }
+
+    .MissionsLeft, .MissionsRight {
+        width: 100%;
+        gap: 2em;
+    }
+
+    .MissionsRight {
+        margin-top: 0;
+    }
+
+    .Team {
+        flex-direction: column;
+        padding: 1em;
+        gap: 3em;
+    }
+
+    .Member img {
+        width: 12em;
+        height: 12em;
+    }
+
+    /* Adjust animation for mobile */
+    .autoShow {
+        animation-timeline: view(80% 10%);
+    }
+
+    .MainPartners {
+        height: auto;
+        flex-direction: column;
+        padding: 1.5em 1em;
+        gap: 1.5em;
+    }
+
+        .MainPartners img {
+            width: 7em;
+            height: 7em;
+        }
+
+    .AllPartners {
+        flex-direction: column;
+        padding: 1.5em 1em;
+        gap: .5em;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .image-partners {
+        width: 100%;
+        gap: 1.5em;
+    }
+
+        .image-partners img {
+            width: 6em;
+            height: 5em;
+        }
+}

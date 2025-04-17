@@ -1,0 +1,303 @@
+﻿
+.hero-section {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 3em 2em;
+    text-align: center;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-section h1 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+    color: var(--text-dark);
+}
+
+.Missions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1em;
+    width: 100%;
+}
+
+.Mission {
+    height: auto;
+    min-height: 22em;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+    border-radius: var(--border-radius);
+    padding: 3em 1.5em;
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+    .Mission:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .Mission h4 {
+        color: var(--primary-color);
+        font-size: 1.3em;
+        margin-bottom: 0.5em;
+        font-weight: 600;
+    }
+
+    .Mission p {
+        line-height: 1.6;
+        color: var(--text-medium);
+    }
+
+h4::after {
+    content: "";
+    display: block;
+    width: 2em;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 5px auto 0;
+}
+
+.mission-icon {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 0.5em;
+}
+
+.cta-section {
+    background-color: var(--accent-color);
+    padding: 3em 2em;
+    text-align: center;
+    margin-top: 2em;
+    width: 100%;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    font-size: 2em;
+    color: var(--text-dark);
+    margin-bottom: 0.5em;
+}
+
+.cta-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+    color: var(--text-medium);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Timeline Section Styling */
+.timeline-section {
+    width: 100%;
+    padding: 3em 1em;
+    border-radius: var(--border-radius);
+    margin-top: 2em;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+    .timeline-header h2 {
+        color: var(--primary-color);
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .timeline-header p {
+        color: var(--text-medium);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+
+
+/* Custom styles for MudTimeline */
+::deep .mud-timeline-item {
+    padding: 1.5em 0;
+}
+
+::deep .mud-timeline-item-opposite,
+::deep .mud-timeline-item-content {
+    padding: 1em;
+}
+
+::deep .mud-timeline.mud-timeline-horizontal {
+    padding: 2em 0;
+}
+
+::deep .mud-timeline-item-dot-info {
+    background-color: var(--primary-color) !important;
+}
+
+::deep .mud-typography-h6 {
+    font-family: var(--Montsera);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+}
+
+::deep .mud-timeline-item-content {
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5em;
+    width: 32em;
+    height: 23em
+}
+
+::deep .mud-timeline-item-opposite {
+    max-width: 300px;
+}
+/* Mobile Styles */
+@media (max-width: 992px) {
+    .Mission {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .MainCont, .Sec {
+        padding: 1em;
+    }
+    .OurStory {
+        flex-direction: column-reverse;
+        gap: 2em;
+        padding: 1em;
+    }
+
+    .image-about img {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .aboutt {
+        margin-top: 1em;
+        gap: 1em;
+        padding: 0;
+    }
+
+    .about-p {
+        gap: 1em;
+    }
+
+    .hero-section {
+        padding: 2em 1em;
+    }
+
+        .hero-section h1 {
+            font-size: 2em;
+        }
+
+        .hero-section p {
+            font-size: 1em;
+        }
+
+    .Missions {
+        flex-direction: column;
+    }
+
+    .Mission {
+        width: 100%;
+        min-height: auto;
+        padding: 2em 1em;
+    }
+    /* Vertical Timeline for mobile */
+    ::deep .mud-timeline {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    ::deep .mud-timeline-item {
+        width: 100%;
+        padding: 1em 0;
+    }
+
+    ::deep .mud-timeline-item-content {
+        width: 100% !important;
+        height: auto !important;
+        margin-left: 0;
+    }
+
+    ::deep .mud-timeline-item-opposite {
+        max-width: 100% !important;
+        text-align: left !important;
+        padding-bottom: 0.5em;
+    }
+
+    .timeline-section {
+        padding: 2em 0.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.8em;
+    }
+
+    .cta-section h2 {
+        font-size: 1.5em;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.autoShow {
+    animation: autoShowAnimation both;
+    animation-timeline: view(90% 5%);
+}
+
+@keyframes autoShowAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

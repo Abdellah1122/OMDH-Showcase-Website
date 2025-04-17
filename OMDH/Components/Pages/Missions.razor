@@ -1,0 +1,336 @@
+﻿@page "/Mission"
+@inject NavigationManager NavigationManager
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: white;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --Montsera: "Montserrat", sans-serif;
+        --Poppins: "Poppins", sans-serif;
+        --Roboto: "Roboto", sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--Montsera);
+        font-size: 0.99em;
+        transition: var(--transition);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: var(--text-dark);
+    }
+
+    button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: 0.5px;
+    }
+
+    .BtnPrimary {
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid var(--primary-color);
+    }
+
+        .BtnPrimary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnSuc {
+        background-color: var(--secondary-color);
+        color: white;
+        border: 1px solid var(--secondary-color);
+    }
+
+        .BtnSuc:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .BtnDanger {
+        background-color: var(--danger-color);
+        color: white;
+        border: 1px solid var(--danger-color);
+    }
+
+        .BtnDanger:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .MainCont {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 2em;
+    }
+
+    .Sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        gap: 1.5em;
+    }
+
+    .OurStory {
+        display: flex;
+        flex-direction: row;
+        gap: 5em;
+        padding: 0em 0em 0em 1em;
+        background-color: var(--accent-color);
+    }
+
+    .Sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        gap: 1.5em;
+    }
+
+    .image-about img {
+        width: 40vw;
+        min-height: 400px;
+        height: auto;
+        border-radius: 3px;
+        object-fit: cover;
+    }
+
+    .aboutt {
+        display: flex;
+        flex-direction: column;
+        margin-top: 5em;
+        padding: 3em;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .about-p {
+        display: flex;
+        flex-direction: column;
+        text-align:center;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+</style>
+<Navigation/>
+
+<!-- Hero Section -->
+
+<div class="OurStory">
+    <div class="aboutt">
+        <div class="about-title">
+            <h1>Our Mission Areas</h1>
+
+        </div>
+        <div class="about-p">
+            <p>At OMDH, we are dedicated to protecting and promoting human rights across multiple fronts. Through advocacy, education, and direct action, we work to create a more just and equitable world for all.</p>
+            <button class="BtnSuc" @onclick="navigateToProjects">See Our Projects</button>
+        </div>
+    </div>
+    <div class="image-about">
+        <img src="/Images/Solidarity.jpg" />
+    </div>
+</div>
+<div class="MainCont">
+    <div class="Sec">
+        <div class="Missions">
+            @if(missions!=null && missions.Any())
+            {
+                for(int i=0;i<3;i++)
+                {
+                    var mission = missions[i];
+
+                    <div class="Mission">
+                            <h4>@mission.Title</h4>
+                            <p>@mission.Description</p>
+                        </div>
+                }
+            }
+        </div>
+        
+        <!-- Timeline Section with header -->
+        <div class="timeline-section">
+            <div class="timeline-header">
+                <div class="autoShow">
+                    <h2>Our Strategic Focus Areas</h2>
+                </div>
+                <div class="autoShow">
+                    <p>These additional mission areas represent our evolving commitment to addressing critical human rights challenges in today's complex global landscape.</p>
+                </div>
+            </div>
+            <div class="autoShow">
+                <MudTimeline TimelineOrientation="TimelineOrientation.Horizontal">
+                    @if (missions != null && missions.Count >= 9)
+                    {
+                        for (int i = 6; i < 9; i++)
+                        {
+                            var mission = missions[i];
+                            <MudTimelineItem Style="color: var(--primary-color);" Size="Size.Small">
+                                <ItemOpposite>
+                                    <MudText Style="color: var(--primary-color);" Typo="Typo.h6">@mission.Title</MudText>
+                                </ItemOpposite>
+                                <ItemContent>
+                                    <MudText Style="color: black;">@mission.Description</MudText>
+                                </ItemContent>
+                            </MudTimelineItem>
+                        }
+                    }
+                </MudTimeline>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <div class="autoShow">
+                <h2>Join Us in Making a Difference</h2>
+            </div>
+            <div class="autoShow">
+                <p>Our mission can only succeed with the support of dedicated individuals and organizations. Whether through volunteering, donations, or partnerships, your contribution can help us create lasting change.</p>
+                <button class="BtnPrimary">Join Us</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<Footer/>
+
+@code {
+    List<Mission> missions;
+    protected override async Task OnInitializedAsync()
+    {
+        missions = new List<Mission>
+        {
+            new Mission
+            {
+                Id=1,
+                Title="Protection of Human Rights",
+                Description="OMDH works to safeguard fundamental human rights by monitoring violations, providing legal support to victims, and advocating for justice in line with international conventions. It documents cases of abuse, lobbies policymakers for reforms, and collaborates with international human rights organizations. Through legal assistance and awareness programs, it ensures victims receive justice and perpetrators are held accountable."
+            },
+            new Mission
+            {
+                Id=2,
+                Title="Promoting Democracy and Rule of Law",
+                Description="Encouraging democratic governance, justice, and legal reforms to ensure the independence of the judiciary and fair trials. OMDH supports constitutional reforms, transparency in government operations, and fair electoral processes. By engaging with civil society, legal experts, and international bodies, it pushes for a legal framework that upholds citizens' rights and limits authoritarian practices."
+            },
+            new Mission
+            {
+                Id=3,
+                Title="Freedom of Expression and Press",
+                Description="OMDH defends the right to free speech and a free press, condemning censorship, arbitrary detentions of journalists, and any restrictions on media freedom. It monitors and reports on press freedom violations, supports independent journalism, and advocates for legislative changes to protect media professionals. By empowering journalists and activists, it strives to create an open and informed society."
+            },
+            new Mission
+            {
+                Id=4,
+                Title="Gender Equality and Women's Rights",
+                Description="It actively fights discrimination against women, promotes gender equality in legal and social contexts, and advocates for stronger laws protecting women's rights. OMDH works to eliminate gender-based violence, ensure equal opportunities in education and employment, and push for political representation of women. Through policy recommendations and grassroots campaigns, it challenges societal norms that hinder women's empowerment."
+            },
+            new Mission
+            {
+                Id=5,
+                Title="Social Justice and Minority Rights",
+                Description="The organization supports marginalized groups, including ethnic minorities, persons with disabilities, and ensures equal rights and protection under the law. It works on policy advocacy, legal aid, and social programs to integrate underrepresented communities into mainstream society. By raising awareness and fostering inclusion, OMDH promotes dignity, access to resources, and fair treatment for all citizens."
+            },
+            new Mission
+            {
+                Id=6,
+                Title="Human Rights Education and Awareness",
+                Description="OMDH conducts workshops, seminars, and awareness campaigns to educate citizens about their rights and responsibilities, fostering a culture of human rights in Morocco. It collaborates with schools, universities, and media outlets to spread knowledge on civil liberties and democratic values. By engaging youth and community leaders, it aims to build a more informed and proactive society that defends human rights."
+            },
+            new Mission
+            {
+                Id=7,
+                Title="Combating Corruption and Transparency",
+                Description="OMDH fights against corruption by promoting transparency, accountability, and good governance in both public and private sectors. It advocates for anti-corruption policies, whistleblower protection, and public access to information. By working with civil society and government institutions, it aims to establish ethical practices, strengthen oversight mechanisms, and reduce financial misconduct."
+            },
+            new Mission
+            {
+                Id=8,
+                Title="Refugee and Migrant Rights",
+                Description="Ensuring the protection and integration of refugees and migrants by advocating for humane immigration policies and social inclusion. OMDH provides legal assistance, supports access to essential services, and fights against discrimination faced by displaced individuals. It works with local and international organizations to improve refugee conditions and push for fair asylum laws."
+            },
+            new Mission
+            {
+                Id=9,
+                Title="Eradicating Torture and Inhumane Treatment",
+                Description="OMDH works to prevent and combat torture, inhumane treatment, and other forms of abuse by security forces and authorities. It monitors detention centers, advocates for humane interrogation methods, and seeks justice for victims of state violence. Through awareness campaigns and legal action, it aims to align national policies with international human rights standards."
+            },
+            new Mission
+            {
+                Id=10,
+                Title="Children's Rights and Protection",
+                Description="Promoting the rights of children by ensuring their protection from exploitation, abuse, and discrimination in all aspects of life. OMDH supports policies that guarantee access to education, healthcare, and a safe environment for all children. By collaborating with child welfare organizations, it raises awareness and pressures governments to enforce laws that prioritize children's well-being."
+            },
+            new Mission
+            {
+                Id=11,
+                Title="Environmental Justice and Climate Rights",
+                Description="Defending environmental rights by advocating for policies that combat climate change, protect natural resources, and ensure sustainable development. OMDH works on issues like pollution, land rights, and corporate responsibility to hold violators accountable. By engaging with communities, activists, and policymakers, it promotes an eco-friendly approach to human rights."
+            },
+            new Mission
+            {
+                Id=12,
+                Title="Protection of Digital Rights and Privacy",
+                Description="Advocating for online freedom, data protection, and the right to privacy in an increasingly digital world. OMDH opposes mass surveillance, cyber censorship, and digital repression while promoting responsible internet governance. By engaging with tech experts and human rights defenders, it ensures that digital spaces remain safe, open, and free from abuse."
+            },
+        };
+    }
+
+   
+
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}

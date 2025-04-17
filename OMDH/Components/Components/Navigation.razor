@@ -1,0 +1,76 @@
+﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<style>
+    :root {
+        --primary-color: #1957a6;
+        --primary-dark: #174c91;
+        --secondary-color: #d3612f;
+        --secondary-light: #b55227;
+        --accent-color: #e8f0ed;
+        --danger-color: #d84040;
+        --danger-dark: #c53030;
+        --gold-accent: #d4c197;
+        --light-bg: #F5F5F5;
+        --text-dark: #2c3e50;
+        --text-medium: #546e7a;
+        --text-light: #78909c;
+        --border-radius: 6px;
+        --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+</style>
+
+<div class="Nv" id="navbar">
+    <div class="logo-container">
+        <button @onclick="navigateToHome" class="Btnss"><img src="/Logo.png" alt="Logo" /></button>
+    </div>
+    <div class="NavBtns">
+        <button @onclick="navigateToMission" class="Btnss">Our Mission</button>
+        <button @onclick="navigateToContact" class="Btnss">Contact Us</button>
+        <button @onclick="navigateToProjects" class="Btnss">Our Projects</button>
+        <button @onclick="navigateToTeam" class="Btnss">Our Team</button>
+    </div>
+</div>
+<script>
+    window.initializeNavbarScroll = () => {
+        window.addEventListener("scroll", () => {
+            let navbar = document.getElementById("navbar");
+            if (window.scrollY > window.innerHeight) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    };
+</script>
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializeNavbarScroll");
+        }
+    }
+    void navigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToContact()
+    {
+        NavigationManager.NavigateTo("/Contact");
+    }
+    void navigateToMission()
+    {
+        NavigationManager.NavigateTo("/Mission");
+    }
+    void navigateToTeam()
+    {
+        NavigationManager.NavigateTo("/Team");
+    }
+    void navigateToProjects()
+    {
+        NavigationManager.NavigateTo("/Projects");
+    }
+}
